@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BERNAUTO | Taller Multimarca en Elche</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --rojo: #E8001D; --negro: #111111; --gris: #2d2d2d; --gris-claro: #f5f5f5; --texto-gris: #666666; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--negro); }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(17,17,17,0.97); display: flex; align-items: center; justify-content: space-between; padding: 0 5%; height: 64px; }
+    .logo { color: white; font-weight: 900; font-size: 20px; text-decoration: none; }
+    .logo span { color: var(--rojo); }
+    .nav-tel { background: var(--rojo); color: white; padding: 9px 18px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 14px; }
+    .hero { min-height: 100vh; background: var(--negro); display: flex; align-items: center; padding: 100px 5% 60px; }
+    .hero h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 900; color: white; line-height: 1.05; margin-bottom: 20px; }
+    .hero h1 em { color: var(--rojo); font-style: normal; }
+    .hero p { font-size: 18px; color: #aaa; max-width: 480px; line-height: 1.6; margin-bottom: 32px; }
+    .badge { display: inline-block; background: rgba(232,0,29,0.15); color: #ff4d63; border: 1px solid rgba(232,0,29,0.3); border-radius: 50px; padding: 6px 16px; font-size: 13px; font-weight: 600; margin-bottom: 24px; }
+    .btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-r { background: var(--rojo); color: white; padding: 14px 28px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 16px; box-shadow: 0 4px 20px rgba(232,0,29,0.4); }
+    .btn-w { color: white; border: 1.5px solid rgba(255,255,255,0.3); padding: 14px 26px; border-radius: 10px; text-decoration: none; font-weight: 600; font-size: 16px; }
+    .stats { display: flex; gap: 40px; margin-top: 52px; flex-wrap: wrap; }
+    .stat-n { font-size: 30px; font-weight: 900; color: white; }
+    .stat-n em { color: var(--rojo); font-style: normal; }
+    .stat-l { font-size: 13px; color: #888; }
+    section { padding: 80px 5%; }
+    .lbl { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--rojo); margin-bottom: 12px; }
+    h2 { font-size: clamp(26px, 4vw, 38px); font-weight: 800; margin-bottom: 14px; }
+    .sub { font-size: 17px; color: var(--texto-gris); max-width: 520px; line-height: 1.6; }
+    .bg-grey { background: var(--gris-claro); }
+    .bg-dark { background: var(--negro); }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; margin-top: 44px; }
+    .card { background: white; border-radius: 14px; padding: 26px; border: 1px solid #ebebeb; transition: all 0.2s; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(0,0,0,0.08); border-color: var(--rojo); }
+    .icon { width: 48px; height: 48px; background: rgba(232,0,29,0.08); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 16px; }
+    .card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .card p { font-size: 14px; color: var(--texto-gris); line-height: 1.5; }
+    .dark-card { background: var(--gris); border-radius: 14px; padding: 26px; border: 1px solid #333; }
+    .dark-num { font-size: 38px; font-weight: 900; color: var(--rojo); margin-bottom: 10px; }
+    .dark-card h3 { font-size: 16px; font-weight: 700; color: white; margin-bottom: 8px; }
+    .dark-card p { font-size: 14px; color: #999; line-height: 1.5; }
+    .stars { color: #f59e0b; font-size: 17px; margin-bottom: 8px; }
+    .score { font-size: 64px; font-weight: 900; line-height: 1; }
+    .r-header { display: flex; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 44px; }
+    .r-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 18px; }
+    .r-card { background: var(--gris-claro); border-radius: 12px; padding: 22px; }
+    .r-name { font-weight: 700; margin-bottom: 4px; }
+    .r-date { font-size: 12px; color: #aaa; margin-bottom: 10px; }
+    .r-text { font-size: 14px; color: #444; line-height: 1.55; font-style: italic; }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 44px; }
+    @media(max-width:680px){ .info-grid { grid-template-columns: 1fr; } }
+    .white-card { background: white; border-radius: 14px; padding: 26px; border: 1px solid #e5e5e5; }
+    table { width: 100%; border-collapse: collapse; }
+    tr { border-bottom: 1px solid #eee; }
+    td { padding: 11px 0; font-size: 15px; }
+    td:first-child { font-weight: 600; }
+    td:last-child { text-align: right; color: var(--texto-gris); }
+    .map-box { border-radius: 14px; overflow: hidden; height: 290px; border: 1px solid #ddd; }
+    .map-box iframe { width: 100%; height: 100%; border: none; }
+    .dato { margin-top: 14px; font-size: 15px; }
+    .cta { background: var(--rojo); padding: 80px 5%; text-align: center; }
+    .cta h2 { color: white; font-size: clamp(26px, 4vw, 42px); font-weight: 900; margin-bottom: 14px; }
+    .cta p { color: rgba(255,255,255,0.85); font-size: 18px; margin-bottom: 32px; }
+    .btn-blanco { background: white; color: var(--rojo); padding: 15px 34px; border-radius: 10px; text-decoration: none; font-weight: 800; font-size: 17px; box-shadow: 0 4px 20px rgba(0,0,0,0.2); display: inline-block; }
+    footer { background: var(--negro); color: #777; text-align: center; padding: 26px 5%; font-size: 13px; }
+    footer a { color: #aaa; }
+    .wa { position: fixed; bottom: 26px; right: 26px; z-index: 999; background: #25D366; color: white; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 26px; box-shadow: 0 4px 18px rgba(37,211,102,0.5); }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="#" class="logo">BERN<span>AUTO</span></a>
+  <a href="tel:647630140" class="nav-tel">&#128222; 647 63 01 40</a>
+</nav>
+
+<section class="hero">
+  <div>
+    <div class="badge">&#128994; Taller de confianza en Elche</div>
+    <h1>Tu taller<br/><em>multimarca</em><br/>de confianza</h1>
+    <p>Servicio rapido, honesto y profesional. Todas las marcas, todas las reparaciones. Sin sorpresas en la factura.</p>
+    <div class="btns">
+      <a href="tel:647630140" class="btn-r">&#128222; Llamar ahora</a>
+      <a href="#servicios" class="btn-w">Ver servicios &#8595;</a>
+    </div>
+    <div class="stats">
+      <div><div class="stat-n">4<em>.9&#9733;</em></div><div class="stat-l">Valoracion Google</div></div>
+      <div><div class="stat-n">376<em>+</em></div><div class="stat-l">Resenas verificadas</div></div>
+      <div><div class="stat-n">10<em>+</em></div><div class="stat-l">Anos de experiencia</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-grey" id="servicios">
+  <p class="lbl">Nuestros servicios</p>
+  <h2>Todo lo que tu coche necesita</h2>
+  <p class="sub">Trabajamos con todas las marcas. Diagnostico rapido y presupuesto sin compromiso.</p>
+  <div class="grid-3">
+    <div class="card"><div class="icon">&#128295;</div><h3>Mecanica general</h3><p>Motor, frenos, embrague. Atencion rapida para cualquier averia.</p></div>
+    <div class="card"><div class="icon">&#129695;</div><h3>Cambio de aceite</h3><p>Aceite y filtros de primera calidad. Alarga la vida de tu motor.</p></div>
+    <div class="card"><div class="icon">&#10052;</div><h3>Aire acondicionado</h3><p>Recarga y reparacion del sistema A/C. Tu coche fresco en verano.</p></div>
+    <div class="card"><div class="icon">&#127777;</div><h3>Refrigeracion</h3><p>Circuito de agua, termostato y radiador. Evita sobrecalentamientos.</p></div>
+    <div class="card"><div class="icon">&#128187;</div><h3>Diagnosis multimarca</h3><p>Scanner para todas las marcas. Detectamos el problema exacto.</p></div>
+    <div class="card"><div class="icon">&#128260;</div><h3>Cambio de filtros</h3><p>Combustible, gasoil, habitaculo. Mantenimiento completo.</p></div>
+  </div>
+</section>
+
+<section class="bg-dark" id="porque">
+  <p class="lbl">Por que elegirnos</p>
+  <h2 style="color:white">Lo que nos hace diferentes</h2>
+  <p class="sub" style="color:#999">376 clientes nos avalan con una puntuacion de 4.9/5 en Google.</p>
+  <div class="grid-3">
+    <div class="dark-card"><div class="dark-num">01</div><h3>Trato personal</h3><p>Te explicamos todo sin tecnicismos. Sabras siempre que se hace y cuanto cuesta.</p></div>
+    <div class="dark-card"><div class="dark-num">02</div><h3>Todas las marcas</h3><p>Seat, Ford, Renault, Toyota, Mercedes... cualquier vehiculo.</p></div>
+    <div class="dark-card"><div class="dark-num">03</div><h3>Cita rapida</h3><p>En muchos casos te atendemos el mismo dia. Sin esperas innecesarias.</p></div>
+    <div class="dark-card"><div class="dark-num">04</div><h3>Precio justo</h3><p>Presupuesto previo sin compromiso. Sin sorpresas al final.</p></div>
+  </div>
+</section>
+
+<section id="resenas">
+  <p class="lbl">Opiniones de clientes</p>
+  <div class="r-header">
+    <div><div class="score">4.9</div><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div style="font-size:14px;color:#aaa">376 resenas en Google</div></div>
+    <h2>Lo que dicen<br/>nuestros clientes</h2>
+  </div>
+  <div class="r-grid">
+    <div class="r-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="r-name">Adrian Mora Coloma</div><div class="r-date">Hace 4 meses &middot; Google</div><p class="r-text">"Traigo aqui mis coches. Siempre me han dado cita rapido y han dejado los vehiculos perfectos. El trato personal es extraordinario. Se ha convertido en mi taller de confianza."</p></div>
+    <div class="r-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="r-name">Santiago Parrilla Masso</div><div class="r-date">Hace 6 meses &middot; Google</div><p class="r-text">"Gran orientacion al cliente. Identifique una fuga en los bajos de mi Jeep Wrangler y rapidamente me resolvieron el cambio de filtro. Llegue sin cita y me atendieron perfectamente."</p></div>
+    <div class="r-card"><div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><div class="r-name">Cliente verificado</div><div class="r-date">Reciente &middot; Google</div><p class="r-text">"Excelente servicio y honestidad. Te dicen exactamente que necesita el coche. Precio justo y sin sorpresas. Lo recomiendo a todo el mundo."</p></div>
+  </div>
+</section>
+
+<section class="bg-grey" id="contacto">
+  <p class="lbl">Encuentranos</p>
+  <h2>Horario y ubicacion</h2>
+  <div class="info-grid">
+    <div class="white-card">
+      <h3 style="font-size:18px;font-weight:800;margin-bottom:18px">&#128197; Horario</h3>
+      <table>
+        <tr><td>Lunes</td><td>9:00-14:00 / 15:00-19:00</td></tr>
+        <tr><td>Martes</td><td>9:00-14:00 / 15:00-19:00</td></tr>
+        <tr><td>Miercoles</td><td>9:00-14:00 / 15:00-19:00</td></tr>
+        <tr><td>Jueves</td><td>9:00-14:00 / 15:00-19:00</td></tr>
+        <tr><td>Viernes</td><td>8:00-14:00</td></tr>
+        <tr><td>Sabado</td><td>Cerrado</td></tr>
+        <tr><td>Domingo</td><td>Cerrado</td></tr>
+      </table>
+      <div class="dato">&#128205; C. Antonio Pascual Quiles, 97, 03204 Elx</div>
+      <div class="dato">&#128222; <a href="tel:647630140" style="color:#E8001D;font-weight:700;text-decoration:none">647 63 01 40</a></div>
+    </div>
+    <div class="map-box">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d789!2d-0.7108095!3d38.2598507!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd63b7c16959aa63%3A0x58eb9cfb8d14b882!2sBERNAUTO!5e0!3m2!1ses!2ses!4v1719000000" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Tu coche tiene algun problema?</h2>
+  <p>Llamanos ahora y te damos cita lo antes posible.</p>
+  <a href="tel:647630140" class="btn-blanco">&#128222; Llamar: 647 63 01 40</a>
+</section>
+
+<footer>
+  <p>&copy; 2025 BERNAUTO &middot; C. Antonio Pascual Quiles, 97, Elche &middot; <a href="tel:647630140">647 63 01 40</a></p>
+</footer>
+
+<a href="https://wa.me/34647630140" class="wa" target="_blank">&#128172;</a>
+</body>
+</html>
